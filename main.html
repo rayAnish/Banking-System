@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Accounts | Basic Banking System</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/customer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-custom {
+            background-color: #ff9900;
+            color: #1a1a2e;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            background-color: #cc7a00;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .my-info {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .table {
+            background-color: #2b2b4a;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table th {
+            background-color: #ff9900;
+            color: #1a1a2e;
+        }
+        
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #ff9900;
+            color: #1a1a2e;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .home-btn:hover {
+            background-color: #cc7a00;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="home-btn"><i class="material-icons">home</i></a>
+
+    <div class="my-info text-center">
+        <button class="btn btn-custom" data-toggle="modal" data-target="#sendMoney">Send Money</button>
+    </div>
+
+  
+    <!-- Modal send money -->
+    <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <input type="text" id="enterName" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rs</span>
+                            </div>
+                            <input type="text" id="enterAmount" class="form-control" placeholder=" Enter Amount" aria-label="Amount (to the nearest rupee)">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="sendMoney()" class="btn btn-custom" data-dismiss="modal">Send Money</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table  -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl. No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Account Number</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Bank Balance(in Rs)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">1</td>
+                        <td>Rahul Sharma</td>
+                        <td>
+                            <p id="rahulAccountNumber">1234567890</p>
+                        </td>
+                        <td>rahul@example.com</td>
+                        <td>
+                            <p id="rahulBankBalance">50000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">2</td>
+                        <td>Priya Gupta</td>
+                        <td>
+                            <p id="priyaAccountNumber">0987654321</p>
+                        </td>
+                        <td>priya@example.com</td>
+                        <td>
+                            <p id="priyaBankBalance">75000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">3</td>
+                        <td>Aditya Singh</td>
+                        <td>
+                            <p id="adityaAccountNumber">5555555555</p>
+                        </td>
+                        <td>aditya@example.com</td>
+                        <td>
+                            <p id="adityaBankBalance">25000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">4</td>
+                        <td>Neha Kapoor</td>
+                        <td>
+                            <p id="nehaAccountNumber">6666666666</p>
+                        </td>
+                        <td>neha@example.com</td>
+                        <td>
+                            <p id="nehaBankBalance">40000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">5</td>
+                        <td>Rohan Patel</td>
+                        <td>
+                            <p id="rohanAccountNumber">7777777777</p>
+                        </td>
+                        <td>rohan@example.com</td>
+                        <td>
+                            <p id="rohanBankBalance">60000</p>
+                        </td>
+                    </tr>
+                    <tr
+                    <tr>
+                        <td scope="row">6</td>
+                        <td>Ishita Desai</td>
+                        <td>
+                            <p id="ishitaAccountNumber">8888888888</p>
+                        </td>
+                        <td>ishita@example.com</td>
+                        <td>
+                            <p id="ishitaBankBalance">45000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">7</td>
+                        <td>Arjun Malhotra</td>
+                        <td>
+                            <p id="arjunAccountNumber">9999999999</p>
+                        </td>
+                        <td>arjun@example.com</td>
+                        <td>
+                            <p id="arjunBankBalance">80000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">8</td>
+                        <td>Pooja Mehta</td>
+                        <td>
+                            <p id="poojaAccountNumber">1111111111</p>
+                        </td>
+                        <td>pooja@example.com</td>
+                        <td>
+                            <p id="poojaBankBalance">30000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">9</td>
+                        <td>Aryan Ravi</td>
+                        <td>
+                            <p id="aryanAccountNumber">2222222222</p>
+                        </td>
+                        <td>aryan@example.com</td>
+                        <td>
+                            <p id="aryanBankBalance">55000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">10</td>
+                        <td>Divya Rao</td>
+                        <td>
+                            <p id="divyaAccountNumber">3333333333</p>
+                        </td>
+                        <td>divya@example.com</td>
+                        <td>
+                            <p id="divyaBankBalance">70000</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+</body>
+</html>
